@@ -92,7 +92,7 @@
 
     .btn {
       border: none;
-      border-radius: 8px; 
+      border-radius: 8px;
       padding: 10px 14px;
       font-size: 13px;
       font-weight: 700;
@@ -229,4 +229,699 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 8px
+      margin-bottom: 8px;
+    }
+
+    .badge {
+      background-color: #EFF6FF;
+      color: var(--primary);
+      border: 1px solid #BFDBFE;
+      border-radius: 6px;
+      padding: 3px 8px;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .card-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-edit {
+      background-color: var(--bg-subtle);
+      border: 1px solid var(--border-medium);
+      border-radius: 6px;
+      padding: 5px 11px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+
+    .btn-edit:hover {
+      background-color: #E2E8F0;
+    }
+
+    .btn-star {
+      background: none;
+      border: none;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      color: #CBD5E1;
+      padding: 2px 4px;
+    }
+
+    .btn-star.ativo {
+      color: var(--star-gold);
+    }
+
+    .card-nome {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .card-obras {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+      margin-bottom: 10px;
+    }
+
+    .info-box {
+      background-color: var(--bg-subtle);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 13px;
+    }
+
+    .info-label {
+      font-weight: 700;
+      color: var(--text-secondary);
+    }
+
+    .card-obs {
+      margin-top: 8px;
+      font-size: 12px;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 48px 20px;
+      background-color: var(--bg-surface);
+      border: 1px dashed var(--border-medium);
+      border-radius: 12px;
+    }
+
+    .empty-state h3 {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .empty-state p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background-color: rgba(15, 23, 42, 0.5);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 16px calc(env(safe-area-inset-bottom, 0px) + 24px);
+    }
+
+    .modal-overlay.aberto {
+      display: flex;
+    }
+
+    .modal-card {
+      background-color: var(--bg-surface);
+      border-radius: 14px;
+      width: 100%;
+      max-width: 480px;
+      max-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
+    }
+
+    .modal-title {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .modal-body {
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin-bottom: 5px;
+    }
+
+    .form-control {
+      width: 100%;
+      background-color: var(--bg-subtle);
+      border: 1px solid var(--border-medium);
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 14px;
+      color: var(--text-primary);
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary);
+      background-color: #FFFFFF;
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 68px;
+    }
+
+    .modal-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .modal-footer-right {
+      display: flex;
+      gap: 8px;
+      margin-left: auto;
+    }
+
+    .btn-save {
+      background-color: var(--success);
+      color: #FFFFFF;
+    }
+
+    .btn-danger {
+      background-color: #FEE2E2;
+      color: var(--danger);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <div class="header-top">
+        <div>
+          <div class="header-tag">Guia Rápido • 03 Dez 2026</div>
+          <h1 class="header-title">CCXP26 • Quinta-feira</h1>
+          <div class="header-sub">São Paulo Expo • 12h às 21h</div>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-ghost" id="btnResetar" title="Restaurar dados originais">Restaurar</button>
+          <button class="btn btn-primary" id="btnNovo">+ Adicionar</button>
+        </div>
+      </div>
+
+      <div class="search-box">
+        <input
+          type="text"
+          id="inputBusca"
+          class="search-input"
+          placeholder="Buscar artista, obra (ex: Batman), palco ou mesa..."
+        />
+        <button class="clear-search" id="btnLimparBusca" title="Limpar busca">✕</button>
+      </div>
+
+      <div class="filtros" id="containerFiltros"></div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="status-bar">
+        <span class="status-count" id="textoContador">Exibindo 0 registros</span>
+        <span>Salvo automaticamente no navegador • Toque em "Editar" para atualizar</span>
+      </div>
+
+      <div class="lista-cards" id="listaCards"></div>
+    </div>
+  </main>
+
+  <!-- Modal Adicionar / Editar -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-card">
+      <h2 class="modal-title" id="modalTitulo">Novo Participante (03/12)</h2>
+
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="campoNome">Nome do Artista / Atração *</label>
+          <input type="text" id="campoNome" class="form-control" placeholder="Ex: Shintaro Kago" />
+        </div>
+
+        <div class="form-group">
+          <label for="campoCategoria">Categoria</label>
+          <select id="campoCategoria" class="form-control">
+            <option value="Quadrinista">Quadrinista</option>
+            <option value="Colorista">Colorista</option>
+            <option value="Roteirista">Roteirista</option>
+            <option value="Ator">Ator</option>
+            <option value="Palcos">Palcos</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="campoLocal">Local / Mesa / Palco</label>
+          <input type="text" id="campoLocal" class="form-control" placeholder="Ex: Artists' Valley - Mesa A12" />
+        </div>
+
+        <div class="form-group">
+          <label for="campoHorario">Horário / Turno</label>
+          <input type="text" id="campoHorario" class="form-control" placeholder="Ex: 14h00 às 17h00" />
+        </div>
+
+        <div class="form-group">
+          <label for="campoObras">Obras / Destaques</label>
+          <input type="text" id="campoObras" class="form-control" placeholder="Ex: Homem-Aranha, Batman..." />
+        </div>
+
+        <div class="form-group">
+          <label for="campoObs">Observações</label>
+          <textarea id="campoObs" class="form-control" placeholder="Ex: Senhas distribuídas 30 min antes"></textarea>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-danger" id="btnExcluir" style="display: none;">Excluir</button>
+        <div class="modal-footer-right">
+          <button class="btn btn-ghost" id="btnCancelar">Cancelar</button>
+          <button class="btn btn-save" id="btnSalvar">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'ccxp26_guia_03dez_v1';
+
+    const DADOS_INICIAIS = [
+      {
+        id: '1',
+        nome: 'John Romita Jr.',
+        categoria: 'Quadrinista',
+        obras: 'Homem-Aranha, Kick-Ass, Demolidor, X-Men',
+        local: "Artists' Valley",
+        horario: '12h00 às 21h00 (Turnos a confirmar)',
+        observacao: 'Presença confirmada nos 4 dias do evento.',
+        favorito: true,
+      },
+      {
+        id: '2',
+        nome: 'Rafael Albuquerque',
+        categoria: 'Quadrinista',
+        obras: 'American Vampire, Batman, Superman Unlimited',
+        local: "Artists' Valley",
+        horario: '12h00 às 21h00 (Turnos a confirmar)',
+        observacao: 'Vencedor do Prêmio Eisner. Mesa no Artists’ Valley.',
+        favorito: false,
+      },
+      {
+        id: '3',
+        nome: 'Rafa Sandoval',
+        categoria: 'Quadrinista',
+        obras: 'Absolute Superman, Flash, Homem de Ferro',
+        local: "Artists' Valley",
+        horario: '12h00 às 21h00 (Turnos a confirmar)',
+        observacao: 'Equipe criativa do Universo Absolute (DC Comics).',
+        favorito: false,
+      },
+      {
+        id: '4',
+        nome: 'Carmine Di Giandomenico',
+        categoria: 'Quadrinista',
+        obras: 'Universo Absolute (DC), Flash',
+        local: "Artists' Valley",
+        horario: '12h00 às 21h00 (Turnos a confirmar)',
+        observacao: 'Confirmado para os quatro dias de festival.',
+        favorito: false,
+      },
+      {
+        id: '5',
+        nome: 'Marcelo Maiolo',
+        categoria: 'Colorista',
+        obras: 'Superman, Batman, Liga da Justiça, Universo Absolute',
+        local: "Artists' Valley",
+        horario: '12h00 às 21h00 (Turnos a confirmar)',
+        observacao: 'Colorista brasileiro de destaque internacional.',
+        favorito: false,
+      },
+      {
+        id: '6',
+        nome: 'Frank Martin',
+        categoria: 'Colorista',
+        obras: 'Capas Marvel/DC, Universo Absolute',
+        local: "Artists' Valley",
+        horario: '12h00 às 21h00 (Turnos a confirmar)',
+        observacao: 'Sessões de assinatura e portfólio no Artists’ Valley.',
+        favorito: false,
+      },
+      {
+        id: '7',
+        nome: 'Jock (Mark Simpson)',
+        categoria: 'Quadrinista',
+        obras: 'Batman: One Dark Knight, Wytches, GONE',
+        local: 'Estande Poptopia / Artists’ Valley',
+        horario: '12h00 às 21h00 (Horário de autógrafos a confirmar)',
+        observacao: 'Lançamento autoral GONE e sessões de autógrafos.',
+        favorito: false,
+      },
+      {
+        id: '8',
+        nome: 'Todd McFarlane',
+        categoria: 'Quadrinista',
+        obras: 'Spawn, Homem-Aranha, Venom',
+        local: "Artists' Valley / Palcos",
+        horario: 'A confirmar na grade oficial',
+        observacao: 'Cofundador da Image Comics; conferir horários de mesa.',
+        favorito: true,
+      },
+      {
+        id: '9',
+        nome: 'Brian Michael Bendis',
+        categoria: 'Roteirista',
+        obras: 'Miles Morales, Demolidor, Novos Vingadores',
+        local: "Artists' Valley",
+        horario: 'A confirmar na grade oficial',
+        observacao: 'Cocriador de Miles Morales.',
+        favorito: false,
+      },
+      {
+        id: '10',
+        nome: 'Elijah Wood',
+        categoria: 'Ator',
+        obras: 'O Senhor dos Anéis (Frodo), Yellowjackets',
+        local: 'Área de Fotos & Autógrafos',
+        horario: '03/12 (Horário de sessão via Mundo Ticket)',
+        observacao: 'Sessões de fotos e autógrafos no dia 03/12.',
+        favorito: false,
+      },
+      {
+        id: '11',
+        nome: 'Christopher Lloyd',
+        categoria: 'Ator',
+        obras: 'De Volta para o Futuro (Doc Brown)',
+        local: 'Área de Fotos & Autógrafos',
+        horario: '03/12 (Horário de sessão via Mundo Ticket)',
+        observacao: 'Sessões de fotos e autógrafos confirmadas a partir de 03/12.',
+        favorito: false,
+      },
+      {
+        id: '12',
+        nome: 'CCXP Marvel Day & Podcast De Quinta',
+        categoria: 'Palcos',
+        obras: 'Especial Universo Marvel (MCU)',
+        local: 'Palco Omelete',
+        horario: '03/12 (Grade horária do dia)',
+        observacao: 'Atividades temáticas Marvel durante a quinta-feira.',
+        favorito: false,
+      },
+      {
+        id: '13',
+        nome: 'Marvel: O Som do Multiverso (Maverick Hunters)',
+        categoria: 'Palcos',
+        obras: 'Trilhas sonoras ao vivo de filmes e games Marvel',
+        local: 'Palco Blast!',
+        horario: '03/12 (Horário a confirmar)',
+        observacao: 'Apresentação musical sincronizada com telões.',
+        favorito: false,
+      },
+    ];
+
+    const CATEGORIAS = ['Todos', 'Favoritos', 'Quadrinista', 'Colorista', 'Roteirista', 'Ator', 'Palcos'];
+
+    // Estado da aplicação
+    let participantes = carregarDados();
+    let categoriaAtiva = 'Todos';
+    let termoBusca = '';
+    let idEditando = null;
+
+    // Persistência local
+    function carregarDados() {
+      try {
+        const salvo = localStorage.getItem(STORAGE_KEY);
+        if (salvo) {
+          const parsed = JSON.parse(salvo);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            return parsed;
+          }
+        }
+      } catch (e) {
+        console.warn('Erro ao ler localStorage:', e);
+      }
+      return structuredClone(DADOS_INICIAIS);
+    }
+
+    function salvarDados() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(participantes));
+      } catch (e) {
+        console.warn('Erro ao salvar no localStorage:', e);
+      }
+    }
+
+    // Elementos DOM
+    const elFiltros = document.getElementById('containerFiltros');
+    const elLista = document.getElementById('listaCards');
+    const elContador = document.getElementById('textoContador');
+    const elBusca = document.getElementById('inputBusca');
+    const elLimparBusca = document.getElementById('btnLimparBusca');
+
+    const elModal = document.getElementById('modalOverlay');
+    const elModalTitulo = document.getElementById('modalTitulo');
+    const elCampoNome = document.getElementById('campoNome');
+    const elCampoCategoria = document.getElementById('campoCategoria');
+    const elCampoLocal = document.getElementById('campoLocal');
+    const elCampoHorario = document.getElementById('campoHorario');
+    const elCampoObras = document.getElementById('campoObras');
+    const elCampoObs = document.getElementById('campoObs');
+    const elBtnExcluir = document.getElementById('btnExcluir');
+
+    // Renderizar chips de categoria
+    function renderizarFiltros() {
+      elFiltros.innerHTML = '';
+      CATEGORIAS.forEach((cat) => {
+        const btn = document.createElement('button');
+        btn.className = 'chip' + (categoriaAtiva === cat ? ' ativo' : '');
+        btn.textContent = cat;
+        btn.onclick = () => {
+          categoriaAtiva = cat;
+          renderizarFiltros();
+          renderizarLista();
+        };
+        elFiltros.appendChild(btn);
+      });
+    }
+
+    // Escapar HTML para segurança
+    function escaparHTML(texto) {
+      const div = document.createElement('div');
+      div.textContent = texto || '';
+      return div.innerHTML;
+    }
+
+    // Renderizar cards filtrados
+    function renderizarLista() {
+      const termo = termoBusca.toLowerCase().trim();
+
+      const filtrados = participantes.filter((item) => {
+        const okCategoria =
+          categoriaAtiva === 'Todos'
+            ? true
+            : categoriaAtiva === 'Favoritos'
+            ? item.favorito
+            : item.categoria === categoriaAtiva;
+
+        const okBusca =
+          termo === '' ||
+          item.nome.toLowerCase().includes(termo) ||
+          item.obras.toLowerCase().includes(termo) ||
+          item.local.toLowerCase().includes(termo) ||
+          item.categoria.toLowerCase().includes(termo);
+
+        return okCategoria && okBusca;
+      });
+
+      elContador.textContent = `Exibindo ${filtrados.length} de ${participantes.length} registros`;
+
+      if (filtrados.length === 0) {
+        elLista.innerHTML = `
+          <div class="empty-state">
+            <h3>Nenhum participante encontrado</h3>
+            <p>Tente limpar o filtro de busca ou clique em "+ Adicionar" para cadastrar um artista.</p>
+          </div>
+        `;
+        return;
+      }
+
+      elLista.innerHTML = filtrados
+        .map(
+          (item) => `
+          <article class="card">
+            <div class="card-header">
+              <span class="badge">${escaparHTML(item.categoria)}</span>
+              <div class="card-actions">
+                <button class="btn-edit" onclick="abrirModalEditar('${item.id}')">Editar</button>
+                <button
+                  class="btn-star ${item.favorito ? 'ativo' : ''}"
+                  onclick="alternarFavorito('${item.id}')"
+                  title="Favoritar"
+                >
+                  ${item.favorito ? '★' : '☆'}
+                </button>
+              </div>
+            </div>
+
+            <h2 class="card-nome">${escaparHTML(item.nome)}</h2>
+            <p class="card-obras"><strong>Obras / Tema:</strong> ${escaparHTML(item.obras)}</p>
+
+            <div class="info-box">
+              <div><span class="info-label">📍 Local:</span> ${escaparHTML(item.local)}</div>
+              <div><span class="info-label">⏰ Horário:</span> ${escaparHTML(item.horario)}</div>
+            </div>
+
+            ${item.observacao ? `<p class="card-obs">${escaparHTML(item.observacao)}</p>` : ''}
+          </article>
+        `
+        )
+        .join('');
+    }
+
+    // Ações dos cards
+    window.alternarFavorito = function (id) {
+      participantes = participantes.map((item) =>
+        item.id === id ? { ...item, favorito: !item.favorito } : item
+      );
+      salvarDados();
+      renderizarLista();
+    };
+
+    window.abrirModalEditar = function (id) {
+      const item = participantes.find((p) => p.id === id);
+      if (!item) return;
+
+      idEditando = id;
+      elModalTitulo.textContent = 'Atualizar Participante / Horário';
+      elCampoNome.value = item.nome;
+      elCampoCategoria.value = item.categoria;
+      elCampoLocal.value = item.local;
+      elCampoHorario.value = item.horario;
+      elCampoObras.value = item.obras;
+      elCampoObs.value = item.observacao || '';
+      elBtnExcluir.style.display = 'inline-block';
+      elModal.classList.add('aberto');
+    };
+
+    function abrirModalNovo() {
+      idEditando = null;
+      elModalTitulo.textContent = 'Novo Participante (03/12)';
+      elCampoNome.value = '';
+      elCampoCategoria.value = 'Quadrinista';
+      elCampoLocal.value = "Artists' Valley - Mesa ";
+      elCampoHorario.value = '14h00 às 16h00';
+      elCampoObras.value = '';
+      elCampoObs.value = '';
+      elBtnExcluir.style.display = 'none';
+      elModal.classList.add('aberto');
+    }
+
+    function fecharModal() {
+      elModal.classList.remove('aberto');
+    }
+
+    function salvarFormulario() {
+      const nome = elCampoNome.value.trim();
+      if (!nome) {
+        alert('Informe o nome do participante ou atração.');
+        elCampoNome.focus();
+        return;
+      }
+
+      const dados = {
+        nome,
+        categoria: elCampoCategoria.value,
+        local: elCampoLocal.value.trim() || "Artists' Valley",
+        horario: elCampoHorario.value.trim() || 'A confirmar',
+        obras: elCampoObras.value.trim() || 'Não especificado',
+        observacao: elCampoObs.value.trim(),
+      };
+
+      if (idEditando) {
+        participantes = participantes.map((p) =>
+          p.id === idEditando ? { ...p, ...dados } : p
+        );
+      } else {
+        participantes.unshift({
+          id: String(Date.now()),
+          ...dados,
+          favorito: true,
+        });
+      }
+
+      salvarDados();
+      fecharModal();
+      renderizarLista();
+    }
+
+    function excluirParticipante() {
+      if (!idEditando) return;
+      if (confirm('Deseja remover este registro da sua lista?')) {
+        participantes = participantes.filter((p) => p.id !== idEditando);
+        salvarDados();
+        fecharModal();
+        renderizarLista();
+      }
+    }
+
+    function restaurarPadrao() {
+      if (confirm('Isso apagará suas edições locais e restaurará a lista original. Continuar?')) {
+        participantes = structuredClone(DADOS_INICIAIS);
+        salvarDados();
+        renderizarLista();
+      }
+    }
+
+    // Eventos
+    elBusca.addEventListener('input', (e) => {
+      termoBusca = e.target.value;
+      elLimparBusca.style.display = termoBusca.length > 0 ? 'block' : 'none';
+      renderizarLista();
+    });
+
+    elLimparBusca.addEventListener('click', () => {
+      termoBusca = '';
+      elBusca.value = '';
+      elLimparBusca.style.display = 'none';
+      renderizarLista();
+    });
+
+    document.getElementById('btnNovo').addEventListener('click', abrirModalNovo);
+    document.getElementById('btnCancelar').addEventListener('click', fecharModal);
+    document.getElementById('btnSalvar').addEventListener('click', salvarFormulario);
+    document.getElementById('btnExcluir').addEventListener('click', excluirParticipante);
+    document.getElementById('btnResetar').addEventListener('click', restaurarPadrao);
+
+    elModal.addEventListener('click', (e) => {
+      if (e.target === elModal) fecharModal();
+    });
+
+    // Inicialização
+    renderizarFiltros();
+    renderizarLista();
+  </script>
+</body>
+</html>
